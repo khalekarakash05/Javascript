@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body style="background-color: #2f2f2f; color: white ;">
+    <h1>Chai aur Javascript</h1>
+    <div style="display: flex; flex-direction: column; gap: 6px;">
+        <button id="start">Start</button>
+        <button id="stop">Stop</button>
+    </div>
+</body>
+
+<script>
+
+
+    const randomColor = () => {
+        const hex = "0123456789ABCDEF";
+        let color = "#";
+
+        for(let i = 0; i<6; i++){
+            color += hex[Math.floor(Math.random() * 16)];
+        }
+
+        return color;
+        
+    }
+    
+    let intervalid;
+    function startChangingColor(){
+
+        function changeColor(){
+            // console.log(randomColor)
+            document.body.style.backgroundColor = randomColor();
+            console.log("hello")
+        }
+        
+        if(!intervalid){
+            intervalid = setInterval(changeColor)
+        }
+    }
+    function startStoppingColor(){
+       clearInterval(intervalid);
+       intervalid = null;
+    }
+
+    document.querySelector("#start").addEventListener("click", startChangingColor)
+    document.querySelector("#stop").addEventListener("click", startStoppingColor)
+
+
+
+
+
+
+
+
+
+
+
+
+
+    // // setInterval(()=>{
+    // //     console.log("Akash", Date.now().toLocaleString())
+    // // }, 1000)
+
+    // let inverid;
+
+    // const sayAkash = (str) => {
+    //     console.log(str, Date.now())
+    // }
+
+    // // setInterval(sayAkash, 1000, "akash");
+
+    // document.querySelector("#start").addEventListener("click", ()=> {
+    //     if(!inverid){
+    //         inverid = setInterval(sayAkash, 1000, "Akash")
+    //         console.log("Started")
+    //     }
+    // })
+
+    // document.querySelector("#stop").addEventListener("click", ()=> {
+    //     if(inverid){
+    //         clearInterval(inverid)
+    //         inverid = undefined
+    //         console.log("Stopped")
+    //     }
+    // })
+</script>
+</html>
